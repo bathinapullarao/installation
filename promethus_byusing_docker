@@ -1,0 +1,66 @@
+Ref: https://www.shellhacks.com/prometheus-monitoring-install-docker-ubuntu-centos/
+
+//Install Prometheus Monitoring Using Docker
+//Create directories to store Prometheus data and configuration files:
+
+$ sudo mkdir -p /opt/prometheus/{conf,data}
+//Change the ownership of the /opt/prometheus/data directory:
+
+$ sudo chown 65534:65534 /opt/prometheus/data
+
+//If you don’t change the ownership you may get the following error:
+
+//msg=”Opening storage failed” err=”open DB in /prometheus: open /prometheus/123456789: permission denied”
+
+//Create a minimal Prometheus configuration file /opt/prometheus/conf/prometheus.yml:
+$ vi /opt/prometheus/conf/prometheus.yml
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['$PROMETHEUS_IP:9090']
+
+//More details about Prometheus configuration options can be found here.
+
+//Create a Docker Compose file /opt/prometheus/docker-compose.yml:
+$ vi /opt/prometheus/docker-compose.yml
+version: "3"
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - /opt/prometheus/conf:/etc/prometheus
+      - /opt/prometheus/data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+//Create a systemd service file /etc/systemd/system/prometheus.service:
+$ vi /etc/systemd/system/prometheus.service
+[Unit]
+Description=Prometheus monitoring docker container
+After=docker.service
+BindsTo=docker.service
+
+[Service]
+Restart=always
+WorkingDirectory=/opt/prometheus/
+# Ubuntu
+ExecStart=/usr/local/bin/docker-compose up
+ExecStop=/usr/local/bin/docker-compose down
+# CentOS
+#ExecStart=/usr/bin/docker-compose up
+#ExecStop=/usr/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
+//Reload systemd configuration and configure prometheus to auto-start on system boot:
+
+$ sudo systemctl daemon-reload
+$ sudo systemctl enable prometheus
+
+//Start the prometheus service:
+
+$ sudo systemctl start prometheus
