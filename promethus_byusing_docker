@@ -1,4 +1,5 @@
 Ref: https://www.shellhacks.com/prometheus-monitoring-install-docker-ubuntu-centos/
+https://www.decodingdevops.com/install-docker-compose-on-centos-7/        <--download docker compose binery
 
 //Install Prometheus Monitoring Using Docker
 //Create directories to store Prometheus data and configuration files:
