@@ -1,5 +1,0 @@
-- To check public IP from powershell
-(Invoke-WebRequest inet-ip.info/ip).Content
-
-- GIT error longpaths
-git config --system core.longpaths true
