@@ -131,7 +131,7 @@ lrwxrwxrwx. 1 root root 15 Oct 21  2018 /usr/sbin/packer -> cracklib-packer
 $ sudo rm /usr/sbin/packer
 ```
 
-2. [Dwonload page](https://www.packer.io/downloads.html) からパッケージをDL
+2. [Dwonload page](https://www.packer.io/downloads.html) 
 
 ```bash
 $ wget https://releases.hashicorp.com/packer/1.4.5/packer_1.4.5_linux_amd64.zip
