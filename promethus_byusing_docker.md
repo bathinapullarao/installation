@@ -14,6 +14,7 @@ $ sudo chown 65534:65534 /opt/prometheus/data
 //msg=”Opening storage failed” err=”open DB in /prometheus: open /prometheus/123456789: permission denied”
 
 //Create a minimal Prometheus configuration file /opt/prometheus/conf/prometheus.yml:
+-------------------------------------------------------------------------------------
 $ vi /opt/prometheus/conf/prometheus.yml
 scrape_configs:
   - job_name: 'prometheus'
