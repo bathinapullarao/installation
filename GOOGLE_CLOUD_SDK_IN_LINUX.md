@@ -1,5 +1,4 @@
 ## Links: https://www.terraform.io/
-----------
 
 ## Install google-cloud-sdk
 
