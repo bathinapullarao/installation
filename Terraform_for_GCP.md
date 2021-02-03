@@ -34,17 +34,17 @@ You have to enable below API's via IAM.
 
 ```bash
 # multi regional
-gsutil mb -p <projectname> -c multi_regional -l Asia gs://gcmpj/
+gsutil mb -p <projectname> -c multi_regional -l Asia gs://mcmpj/
 
 # regional
-gsutil mb -p <projectname> -c regional -l asia-northeast1 gs://gcmpj/
+gsutil mb -p <projectname> -c regional -l asia-northeast1 gs://mcmpj/
 ```
 
-2. Backet for upload file of GCM (documents related to contract).
+2. Backet for upload file of MCM (documents related to contract).
 
 ```bash
 $ gsutil ls
-gs://${env}-gcm-uploads/
+gs://${env}-Mcm-uploads/
 ```
 
 Using GCS as a data storage via gcsfuse.
