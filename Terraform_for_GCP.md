@@ -73,7 +73,7 @@ tfenv list-remote
 ```bash
 $ tfenv install 0.12.6
 $ tfenv list
-* 0.12.6 (set by /home/yoshida/.tfenv/version)
+* 0.12.6 (set by /home/rao/.tfenv/version)
 ```
 
 You already have some repository for terraform, please check whether `.terraform-version` file exist or not.
